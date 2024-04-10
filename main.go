@@ -3,11 +3,14 @@ package main
 import "fmt"
 
 func main() {
-	// Other ways of declaring variables
-	// var card string = "Ace of Spades"
-	card := "Ace of Spades"
-	card = "Five of Diamonds" // You can reassign the value of the variable, as long as the value is of the same type.
-	fmt.Println(card)
+	cards := []string{"Ace of Diamonds", newCard()}
+	cards = append(cards, "Six of Spades")
+
+	for i, card := range cards {
+		fmt.Println(i, card)
+	}
 }
 
-// Basic Go Types: bool, string, int, float64
+func newCard() string {
+	return "Five of Diamonds"
+}
