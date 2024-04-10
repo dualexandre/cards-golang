@@ -84,3 +84,50 @@ for _, suit := range cardSuits {
 	}
 }
 ```
+
+### Slices are zero-indexed
+```go
+fruits := []string {"apple", "banana", "grape", "orange", "peach"}
+fmt.Println(fruits[0]) // Output: apple 
+fmt.Println(fruits[3]) // Output: orange 
+
+// Syntax: fruits[start(Included):end(Not Included)].
+fmt.Println(fruits[0:2]) // Output: [apple banana] -> Includes: 0, 1. Not includes: 2.
+fmt.Println(fruits[:2]) // Output: [apple banana] -> It takes from index 0 to index 2, excluding index 2.
+fmt.Println(fruits[2:]) // Output: [grape orange peach] -> Take from index 2 to the end of the slice.
+fmt.Println(fruits[1:3]) // Output: [banana grape] -> Includes: 1, 2. Not includes: 3.
+```
+
+### Function that returns two variables
+```go
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:]
+}
+
+// How to use:
+cards := newDeck()
+hand, remainingCards := deal(cards, 5)
+hand.print()
+remainingCards.print()
+
+// Output hand:
+// 0 Ace of Spades
+// 1 Two of Spades
+// 2 Three of Spades
+// 3 Four of Spades
+// 4 Five of Spades
+
+// Output remainingCards:
+// 0 Six of Spades
+// 1 Seven of Spades
+// 2 Eight of Spades
+// 3 Nine of Spades
+// 4 Ten of Spades
+// 5 Jack of Spades
+// 6 Queen of Spades
+// 7 King of Spades
+// 8 Ace of Diamonds
+// 9 Two of Diamonds
+// 10 Three of Diamonds
+// ...
+```
