@@ -74,3 +74,13 @@ cards := deck{"Ace of Diamonds", newCard()}
 cards = append(cards, "Six of Spades")
 cards.print()
 ```
+
+### Variable not used
+```go
+// The range method first returns the index of the slice. If this value is not used, use "_" instead.
+for _, suit := range cardSuits {
+	for _, value := range cardValues {
+		cards = append(cards, value+" of "+suit)
+	}
+}
+```
