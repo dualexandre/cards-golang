@@ -163,3 +163,23 @@ func newDeckFromFile(filename string) deck {
 	// deck(): Add type deck to array.
 }
 ```
+
+### Shuffle method
+```go
+func (d deck) shuffle() {
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+	for i := range d {
+		newPosition := r.Intn(len(d) - 1)
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
+}
+// Line-by-line explanation
+// source := rand.NewSource(time.Now().UnixNano()): This line creates a new source of random numbers using the current time. rand.NewSource() returns a new source of random numbers that generates distinct values on each execution, while time.Now().UnixNano() returns the current time in nanoseconds. This ensures that every time the program is run, the random number source is initialized differently.
+-
+// r := rand.New(source): Here, a new random number generator (r) is created using the random number source created earlier.
+-
+// newPosition := r.Intn(len(d) - 1): Here, a random number is generated representing the new position of the card currently at i. r.Intn() generates a non-negative integer less than the provided argument (which is the size of the deck - 1).
+-
+// d[i], d[newPosition] = d[newPosition], d[i]: This line swaps the positions of the cards at the current position (i) and the new position (newPosition). This effectively shuffles the cards.
+```
