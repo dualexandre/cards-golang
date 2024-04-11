@@ -17,7 +17,6 @@ func newDeck() deck {
 			cards = append(cards, value+" of "+suit)
 		}
 	}
-
 	return cards
 }
 
@@ -38,4 +37,16 @@ func (d deck) toString() string {
 func (d deck) saveToFile(fileName string) error {
 	fileByte := []byte(d.toString())
 	return os.WriteFile(fileName, fileByte, 0666)
+}
+
+func newDeckFromFile(filename string) deck {
+	byteSlice, err := os.ReadFile(filename)
+	if err != nil {
+		fmt.Println("Error:", err)
+		os.Exit(1)
+	}
+
+	sliceString := strings.Split(string(byteSlice), ",")
+	fmt.Println(sliceString)
+	return deck(sliceString)
 }

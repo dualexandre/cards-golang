@@ -146,3 +146,20 @@ func (d deck) toString() string {
 
 // Output: Ace of Spades,Two of Spades,Three of Spades,Four of Spades,Five of Spades,Six of Spades,Seven of Spades,Eight of Spades...
 ```
+
+### os.ReadFile & strings.Split
+```go
+func newDeckFromFile(filename string) deck {
+	// ReadFile: Transforms a file into a byte array. [65 99 101 32 111 102 32 83 112 ...]
+	byteSlice, err := os.ReadFile(filename) 
+	if err != nil {
+		fmt.Println("Error:", err)
+		os.Exit(1)
+	}
+	// string(byteSlice): Creates a string from the bytes it receives (separated by a comma). Ace of Spades,Two of Spades,Three of Spades,Four of Spades, ...
+	sliceString := strings.Split(string(byteSlice), ",")
+	// Split(string(byteSlice), ","): Transforma a string separada por vírgulas em um array. [Ace of Spades Two of Spades Three of Spades Four of Spades ...]
+	return deck(sliceString)
+	// deck(): Add type deck to array.
+}
+```
