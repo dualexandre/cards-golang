@@ -131,3 +131,18 @@ remainingCards.print()
 // 10 Three of Diamonds
 // ...
 ```
+
+### Byte
+```go
+hello := "Hi there!"
+fmt.Println([]byte(hello)) // Transform to byte. Output: [72 105 32 116 104 101 114 101 33]
+```
+
+### Turn a slice of strings into a single string
+```go
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",") // Join concatenates the elements of its first argument to create a single string. The separator string sep is placed between elements in the resulting string.
+}
+
+// Output: Ace of Spades,Two of Spades,Three of Spades,Four of Spades,Five of Spades,Six of Spades,Seven of Spades,Eight of Spades...
+```
