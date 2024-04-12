@@ -49,7 +49,6 @@ func newDeckFromFile(filename string) deck {
 	}
 
 	sliceString := strings.Split(string(byteSlice), ",")
-	fmt.Println(sliceString)
 	return deck(sliceString)
 }
 
